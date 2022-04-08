@@ -4,8 +4,8 @@
 /node_modules
 /.pnp
 .pnp.js
-/src/components/Module 58
-/App.test.js
+*/src/components/Module 58
+
 # testing
 /coverage
 
@@ -22,3 +22,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+src
+src
+README.md
+README.md
