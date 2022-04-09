@@ -1,9 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useFirebase } from "../Hooks/useFirebase";
 
 const Header = () => {
+  const { user, handleSignOut } = useFirebase();
   return (
-    <nav classNameName="bg-dark">
+    <nav className="bg-dark">
       <ul className="nav justify-content-center">
         <li className="nav-item bg-warning me-2">
           <Link className="nav-link active" aria-current="page" to="/">
@@ -11,9 +13,16 @@ const Header = () => {
           </Link>
         </li>
         <li className="nav-item bg-warning me-2">
-          <Link className="nav-link" to="/login">
-            Log in
-          </Link>
+          {user?.uid && <span>{user.displayName}</span>}
+          {user?.uid ? (
+            <Link className="nav-link" to={"/register"} onClick={handleSignOut}>
+              Log Out
+            </Link>
+          ) : (
+            <Link className="nav-link" to="/login">
+              Log in
+            </Link>
+          )}
         </li>
         <li className="nav-item bg-warning me-2">
           <Link className="nav-link" to="/register">
